@@ -34,7 +34,6 @@ class Router
 			{	
 
 				$internalRoat = preg_replace("~$uriPattern~", $path, $uri);
-
 				// Определяем котролер, экшн, путь
 				$segments = explode('/', $internalRoat);
 
@@ -45,9 +44,12 @@ class Router
 
 				$parameters = $segments;
 
+				// echo $controllerName; //////////////////////////////
+				// echo "<br>"; //////////////////////////////
+				// echo $actionName; //////////////////////////////
+
 
 				// Подключить файл класса - контроллера
-
 				// $pathToController = realpath('../controllers/');
 				$controllerFile = ROOT . '/controller/' . $controllerName . '.php';
 
