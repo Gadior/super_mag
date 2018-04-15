@@ -15,13 +15,26 @@ class CatalogController
 		$latestProducts = Product::getLatestProducts(12);		
 
 		// echo "<pre>"; //////////////////////
-		// print_r($product); //////////////////////
+		// print_r($latestProducts); //////////////////////
 
 
-		require_once (ROOT.'/views/news/index1.php');
+		require_once (ROOT.'/views/catalog/index.php');
 
 
 		return true;
 
 	}
+
+	public function actionCategory($categoryId)
+	{
+		$categories = array();
+		$categories = Category::getCategoryList();
+
+		$categoryProduct = array();
+		$categoryProduct = Product::getProductListByCategory($categoryId);
+
+		require_once (ROOT . '/views/catalog/category.php');
+		return true;
+	}
+
 }

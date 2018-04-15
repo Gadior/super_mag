@@ -1,6 +1,3 @@
-<?php
-
-echo '
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -10,13 +7,13 @@ echo '
         <meta name="description" content="">
         <meta name="author" content="">
         <title>Товар</title>
-        <link href="template/css/bootstrap.min.css" rel="stylesheet">
-        <link href="template/css/font-awesome.min.css" rel="stylesheet">
-        <link href="template/css/prettyPhoto.css" rel="stylesheet">
-        <link href="template/css/price-range.css" rel="stylesheet">
-        <link href="template/css/animate.css" rel="stylesheet">
-        <link href="template/css/main.css" rel="stylesheet">
-        <link href="template/css/responsive.css" rel="stylesheet">
+        <link href="http://localhost/template/css/bootstrap.min.css" rel="stylesheet" type='text/css'>
+        <link href="http://localhost/template/css/font-awesome.min.css" rel="stylesheet" type='text/css'>
+        <link href="http://localhost/template/css/prettyPhoto.css" rel="stylesheet" type='text/css'>
+        <link href="http://localhost/template/css/price-range.css" rel="stylesheet" type='text/css'>
+        <link href="http://localhost/template/css/animate.css" rel="stylesheet" type='text/css'>
+        <link href="http://localhost/template/css/main.css" rel="stylesheet" type='text/css'>
+        <link href="http://localhost/template/css/responsive.css" rel="stylesheet" type='text/css'>
         <!--[if lt IE 9]>
         <script src="js/html5shiv.js"></script>
         <script src="js/respond.min.js"></script>
@@ -88,7 +85,7 @@ echo '
                             </div>
                             <div class="mainmenu pull-left">
                                 <ul class="nav navbar-nav collapse navbar-collapse">
-                                    <li><a href="index.php" class="active">Главная</a></li>
+                                    <li><a href="http://localhost/" class="active">Главная</a></li>
                                     <li class="dropdown"><a href="#">Магазин<i class="fa fa-angle-down"></i></a>
                                         <ul role="menu" class="sub-menu">
                                             <li><a href="catalog/">Каталог товаров</a></li>
@@ -105,7 +102,4 @@ echo '
                 </div>
             </div><!--/header-bottom-->
             
-        </header><!--/header-->';
-
-
-?>
+        </header><!--/header-->

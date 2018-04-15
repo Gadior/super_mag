@@ -13,12 +13,12 @@ echo '  <footer id="footer"> <!--Footer-->
 
 
 
-        <script src="template/js/jquery.js"></script>
-        <script src="template/js/bootstrap.min.js"></script>
-        <script src="template/js/jquery.scrollUp.min.js"></script>
-        <script src="template/js/price-range.js"></script>
-        <script src="template/js/jquery.prettyPhoto.js"></script>
-        <script src="template/js/main.js"></script>
+        <script src="http://localhost/template/js/jquery.js"></script>
+        <script src="http://localhost/template/js/bootstrap.min.js"></script>
+        <script src="http://localhost/template/js/jquery.scrollUp.min.js"></script>
+        <script src="http://localhost/template/js/price-range.js"></script>
+        <script src="http://localhost/template/js/jquery.prettyPhoto.js"></script>
+        <script src="http://localhost/template/js/main.js"></script>
     </body>
 </html>';
 ?>

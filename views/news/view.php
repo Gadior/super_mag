@@ -1,5 +1,5 @@
 <!-- File view -->
-<?php include ROOT . '/layouts/header1.php';?>
+<?php include ROOT . '/layouts/header.php';?>
 
         <section>
             <div class="container">
@@ -53,12 +53,12 @@
                             <div class="row">
                                 <div class="col-sm-5">
                                     <div class="view-product">
-                                        <img src="../template/images/product-details/1.jpg" alt="" />
+                                        <img src="/template/images/product-details/1.jpg" alt="" />
                                     </div>
                                 </div>
                                 <div class="col-sm-7">
                                     <div class="product-information"><!--/product-information-->
-                                        <img src="../template/images/product-details/new.jpg" class="newarrival" alt="" />
+                                        <img src="/template/images/product-details/new.jpg" class="newarrival" alt="" />
                                         <h2>Anne Klein Sleeveless Colorblock Scuba</h2>
                                         <p>Код товара: 1089772</p>
                                         <span>
@@ -111,4 +111,4 @@
         <br/>
         <br/>
         
-<?php include ROOT.'/layouts/footer1.php'; ?>
+<?php include ROOT.'/layouts/footer.php'; ?>
