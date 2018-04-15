@@ -17,7 +17,12 @@
                         <?php foreach ($categories as $key => $val):  ?>
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h4 class="panel-title"><a href="/category/<?php echo $categories[$key]['id']; ?>"><?php echo $categories[$key]['name']; ?></a></h4>
+                                    <h4 class="panel-title">
+                                    <a href="/category/<?php echo $categories[$key]['id']; ?>" class="
+                                    <?php if ($categoryId ==  $categories[$key]['id']){ echo 'active';}?>">
+                                    <?php echo $categories[$key]['name']; ?>
+                                    </a>
+                                    </h4>
                                 </div>
                             </div>
                         <?php endforeach;?>

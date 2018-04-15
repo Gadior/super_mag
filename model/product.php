@@ -44,6 +44,7 @@ class Product
 	// print_r($productList); ///////////////////////
 
 		return $productList;
+		///---
 	}
 
 	public static function getProductListByCategory($categoryId = false)
@@ -92,18 +93,18 @@ class Product
 			////////////////////////
 			////////////////////////
 			if($count>0){
-			if($count)
-			{
+				if($count)
+				{
 
-				while ($rows = mysqli_fetch_array($info)) {
-					$product[$i]['id'] = $rows['id'];
-					$product[$i]['name'] = $rows['name'];
-					$product[$i]['price'] = $rows['price'];
-					$product[$i]['image'] = $rows['image'];
-					$product[$i]['is_new'] = $rows['is_new'];
-					$product[$i]['description'] = $rows['description'];
-					$i++;
-				}
+					while ($rows = mysqli_fetch_array($info)) {
+						$product[$i]['id'] = $rows['id'];
+						$product[$i]['name'] = $rows['name'];
+						$product[$i]['price'] = $rows['price'];
+						$product[$i]['image'] = $rows['image'];
+						$product[$i]['is_new'] = $rows['is_new'];
+						$product[$i]['description'] = $rows['description'];
+						$i++;
+					}
 				////////////////////////
 				////////////////////////
 				// echo "<pre>";
@@ -111,11 +112,74 @@ class Product
 				////////////////////////
 				////////////////////////
 
-			}
-			return $product;
+				}
+				return $product;
 			}
 
 		}
+		///---
+	}
+
+	public static function getProductById($productId)
+	{
+		////////////////////////
+		////////////////////////
+		// echo $productId;
+		////////////////////////
+		////////////////////////
+		$con = mysqli_connect("localhost", "root", "1g0VZMoIl3iLkxms", "super_mag");
+		mysqli_set_charset($con, "utf8");
+
+			//Чек коннекта
+
+		if(mysqli_connect_error()){
+			echo "Faild to connect" . mysqli_connect_error();
+		}
+
+		$result = "SELECT * FROM product WHERE id = " . $productId;			
+		////////////////////////
+		////////////////////////
+		// print_r($result);
+		////////////////////////
+		////////////////////////
+
+		$info = mysqli_query($con, $result);
+		$count = mysqli_num_rows($info);
+		$i=0;
+
+		if($count)
+		{
+
+			while ($rows = mysqli_fetch_array($info)) {
+				$product[$i]['id'] = $rows['id'];
+				$product[$i]['name'] = $rows['name'];
+				$product[$i]['category_id'] = $rows['category_id'];
+				$product[$i]['code'] = $rows['code'];
+				$product[$i]['price'] = $rows['price'];
+				$product[$i]['availability'] = $rows['availability'];
+				$product[$i]['brand'] = $rows['brand'];
+				$product[$i]['image'] = $rows['image'];
+				$product[$i]['description'] = $rows['description'];
+				$product[$i]['is_new'] = $rows['is_new'];
+				$product[$i]['is_recommended'] = $rows['is_recommended'];
+				$product[$i]['status'] = $rows['status'];
+				$i++;
+			}
+
+
+		}
+
+
+		///---
+		
+
+				////////////////////////
+				////////////////////////
+				// echo "<pre>";
+				// print_r($product);
+				////////////////////////
+				////////////////////////
+		return $product;
 	}
 
 	

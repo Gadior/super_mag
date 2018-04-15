@@ -46,8 +46,8 @@
                                                 </div>
 
                                                 <?php if($latestProducts[$key]['is_new']): ?>
-                                                <img src="template/images/home/new.png" class="new" alt="">
-                                            <?php endif; ?>
+                                                    <img src="template/images/home/new.png" class="new" alt="">
+                                                <?php endif; ?>
 
                                             </div>
                                         </div>
