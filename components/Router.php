@@ -25,7 +25,8 @@ class Router
 	{
 		// Получить строку запроса
 
-		$uri = $this->getURI();		
+		$uri = $this->getURI();
+
 
 		// Проверить наличие такого запроса в routes.php
 
@@ -36,7 +37,15 @@ class Router
 				$internalRoat = preg_replace("~$uriPattern~", $path, $uri);
 				// Определяем котролер, экшн, путь
 				$segments = explode('/', $internalRoat);
+				
 
+				//////////////////////////////
+				//////////////////////////////
+				// echo "<pre>"; 
+				// print_r($segments); 
+				//////////////////////////////
+				//////////////////////////////
+				
 				$controllerName = array_shift($segments) . 'Controller';
 				$controllerName = ucfirst($controllerName);
 
@@ -44,9 +53,13 @@ class Router
 
 				$parameters = $segments;
 
-				// echo $controllerName; //////////////////////////////
-				// echo "<br>"; //////////////////////////////
-				// echo $actionName; //////////////////////////////
+				//////////////////////////////
+				//////////////////////////////
+				// echo $controllerName; 
+				// echo "<br>"; 
+				// echo $actionName; 
+				//////////////////////////////
+				//////////////////////////////
 
 
 				// Подключить файл класса - контроллера

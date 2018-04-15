@@ -11,8 +11,8 @@ class SiteController
 		$categories = array();
 		$categories = Category::getCategoryList();
 
-		$products = array();
-		$products = Product::getLatestProducts(10);		
+		$latestProducts = array();
+		$latestProducts = Product::getLatestProducts(4);		
 
 		// echo "<pre>"; //////////////////////
 		// print_r($product); //////////////////////

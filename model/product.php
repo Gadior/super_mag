@@ -21,7 +21,7 @@ class Product
 
 	$productList = array();
 
-	$result = "SELECT id, name, price, image, is_new FROM product WHERE status=1 ORDER BY id DESC LIMIT " . $count;
+	$result = "SELECT id, name, price, image, is_new, description FROM product WHERE status=1 ORDER BY id DESC LIMIT " . $count;
 
 	$info = mysqli_query($con, $result);
 	$count = mysqli_num_rows($info);
@@ -35,6 +35,7 @@ class Product
 			$productList[$i]['price'] = $rows['price'];
 			$productList[$i]['image'] = $rows['image'];
 			$productList[$i]['is_new'] = $rows['is_new'];
+			$productList[$i]['description'] = $rows['description'];
 			
 			$i++;
 		}

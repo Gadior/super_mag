@@ -1,0 +1,335 @@
+* Код для подключения шрифта в /css/stylename.css */
+
+@font-face {
+	font-family: "HeliosRegular";
+	src: url("fonts/HeliosRegular.eot");
+	src: url("fonts/HeliosRegular.eot?#iefix")format("embedded-opentype"),
+	url("fonts/HeliosRegular.woff") format("woff"),
+	url("fonts/HeliosRegular.ttf") format("truetype");
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "HeliosBlack";
+	src: url("fonts/HeliosBlack.eot");
+	src: url("fonts/HeliosBlack.eot?#iefix")format("embedded-opentype"),
+	url("fonts//HeliosBlack.woff") format("woff"),
+	url("fonts//HeliosBlack.ttf") format("truetype");
+	font-style: normal;
+	font-weight: normal;
+}
+
+
+*{
+	font-family: 'HeliosRegular', sans-serif;
+}
+
+html, body {
+	margin: 0;
+	background-color: #adc4dd;
+}
+
+.page_wrapper{
+	position: relative;
+	width: 1280px;
+	margin: 0 auto;
+}
+
+/*HEADER*/
+
+.header{
+	width: 1280px;
+	height: 100px;
+}
+
+.realit{
+	position: relative;
+}
+
+
+.prime_menu{
+	height: 50px;
+	line-height: 50px;
+}
+
+
+.second_menu{
+	position: absolute;
+	top: 40px;
+	left: 20px;
+	height: 50px;
+
+}
+
+.second_menu ul{
+	margin-left: 45px;
+	margin-top: 0;
+	padding: 0;
+	line-height: 48px;
+	font-size: 0;
+
+}
+
+.second_menu ul > li{
+	display: block;
+	height: 50px;
+	line-height: 50px;
+	padding-right: 20px;
+	font-size: 20px;
+	display: inline-block;
+
+}
+
+.second_menu ul > li a{
+	color: #fff;
+	text-decoration: none;
+
+
+}
+
+.second_menu a:hover {
+	padding-right: 15px;
+	padding-left: 15px;
+	display: block;	
+	background-color: #adc4dd;
+}
+
+.contact{
+	position: absolute;
+	right: 105px;
+	top: 40px;
+	color: #fff;
+
+}
+
+.contact1{
+	position: absolute;
+	right: 45px;
+	top: 44px;
+	color: #fff;
+
+}
+
+.zag{
+	font-family: 'HeliosBlack', sans-serif;
+	font-weight: bold;
+	color: white;
+	position: absolute;
+	font-size: 20px;
+	left: 65px;
+	top: 80px;
+}
+
+.zag_t{
+	font-family: 'HeliosBlack', sans-serif;
+	width: 550px;
+	font-weight: bold;
+	color: white;
+	position: absolute;
+	font-size: 20px;
+	line-height: 35px;
+	left: 115px;
+	top: 600px;
+}
+
+.forma{
+	width: 220px;
+	position: absolute;
+	font-size: 16px;
+	line-height: 20px;
+	right: 110px;
+	top: 90px;
+	font-weight: bolder;
+}
+
+.otst{
+	padding-top: 2px;
+	height: 10px;
+}
+
+input[type=text] {
+    padding:5px; 
+    border:0px solid #ccc; 
+    
+}
+
+input[type=text]:focus {
+    border-color:#333;
+}
+
+input[type=submit] {
+	margin-top: 5px;
+    padding:5px 15px; 
+    background:#ccc; 
+    border:0 none;
+    cursor:pointer;
+    background: none;
+    border:2px solid #000; 
+
+}
+
+input[type=submit]:hover {
+    padding:5px 15px; 
+    background:#124578; 
+    border:0 none;
+    cursor:pointer;
+    background: none;
+    border:2px solid #000; 
+
+}
+
+.p2_pic{
+	position: absolute;
+	top: 880px;
+
+}
+
+.zag_p2{
+	font-family: 'HeliosBlack', sans-serif;
+	font-weight: bold;
+	position: absolute;
+	font-size: 28px;
+	left: 65px;
+	top: 20px;
+}
+
+.p2_spis{
+	width: 450px;
+	position: absolute;
+	top: 150px;
+	left: 20px;
+	height: 50px;
+
+}
+
+.p2_spis ul{
+	margin-left: 45px;
+	margin-top: 0;
+	padding: 0;
+	line-height: 48px;
+	font-size: 0;
+
+}
+
+.p2_spis ul > li{
+	height: 50px;
+	line-height: 25px;
+	padding-right: 20px;
+	font-size: 20px;
+
+}
+
+
+
+.p2_form > form > input[type=submit] {
+	margin-top: 5px;
+    padding:5px 15px; 
+    background:#ccc; 
+    border:0 none;
+    cursor:pointer;
+    background: none;
+    border:2px solid #000;
+    font-size: 28px;
+
+}
+
+
+.p2_form{
+	font-family: 'HeliosBlack', sans-serif;
+	font-weight: bold;
+	position: absolute;
+	font-size: 28px;
+	left: 45px;
+	top: 425px;
+}
+
+
+/* ------------------ P3 */
+
+.p3_pic{
+	position: absolute;
+	top: 1530px;
+
+}
+
+.zag_p3{
+	font-family: 'HeliosBlack', sans-serif;
+	font-weight: bold;
+	position: absolute;
+	font-size: 28px;
+	left: 65px;
+	top: 20px;
+}
+
+.check:hover{
+	background-image: url('img/nr_o_1.png');
+}
+
+.p4_pic{
+	position: absolute;
+	top: 2165px;
+
+}
+.zag_p4{
+	font-family: 'HeliosBlack', sans-serif;
+	font-weight: bold;
+	position: absolute;
+	font-size: 28px;
+	left: 65px;
+	top: 140px;
+}
+
+.zag_t1{
+	font-family: 'HeliosBlack', sans-serif;
+	font-weight: bold;
+	position: absolute;
+	color: #000;
+	font-size: 18px;
+	left: 65px;
+	top: 280px;
+}
+
+.p4_form{
+	position: absolute;
+	top: 310px;
+	left: 65px;
+}
+
+
+.p4_form > form > input[type=text] {
+    padding:15px; 
+    border:0px solid #ccc; 
+    
+}
+
+.p4_form > form > input[type=textarea] {
+    padding:5px; 
+    border:0px solid #ccc; 
+    
+}
+
+.p4_form > form > input[type=text]:focus {
+    border-color:#333;
+}
+
+.p4_form > form > input[type=submit] {
+	margin-top: 5px;
+    padding:5px 15px; 
+    background:#ccc; 
+    border:0 none;
+    cursor:pointer;
+    background: none;
+    border:2px solid #000; 
+
+}
+
+.p4_form > form > input[type=submit]:hover {
+    padding:5px 15px; 
+    background:#124578; 
+    border:0 none;
+    cursor:pointer;
+    background: none;
+    border:2px solid #000; 
+
+}
