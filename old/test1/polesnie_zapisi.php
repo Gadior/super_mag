@@ -327,6 +327,320 @@ class Audi implements Car,Boat{
 // ---- Конец -----------------
 
 
+
+// ---- Короткий вид цикла в HTML  -----------------
+
+<?php if(условие);?> // foreach
+
+какой то хтмл код
+
+<?php endif;?> // endforeach
+
+// ---- Конец -----------------
+
+
+// ---- Короткий вид цикла в HTML  -----------------
+
+Общая модель MVC
+
+1. Инициализатор запуска (определение Routa - и как вызов его функции)
+
+2. В Route необходимо обработать путь который строить в URL строки браузера.
+	- Модель путей, т.е маски лежат в routes - они же и есть пути
+	- Вторая зада Route - в зависимости от строки бразуера определить Метод и Контроль для обработки
+
+3. Получи в Route метод и контроль - запускается данный метод и контролер. Это некий собирательный  источник, который агрегирует разную инфоормацию из разных моделей. После получения корректной инфы из моделей - вызывает страницу (в методе) в которую это все передает
+
+4. Модель является объектом - сбора данных ( имеет статические функции как правило). здесь происходят запросы к БД, помещение их в массив и т.п.
+	- Модель возвращает эти данные посредствам return
+
+
+3.1.
+	После обработки данных в Методе Контролера посредствам Моделей - происходит вызов страницы отображения (в MVC - V). 
+
+
+Архитектура 
+
+index.php
+Controllers - > Агрегаторы информации в зависимости от задачи странички
+Config -> хранит маски путей и всякие подключения к БД
+Models -> хранит обработчики информации
+views ( в будущем используй pages) - хранит внешний вид страниц.
+template (или site) -> хранит скрипты/верстку/картинки и т.п.
+
+
+Течение информации
+
+Пользователь ->
+index.php ->
+require_once - Router ->
+	-> чек routes ->
+	-> Проверка контролера в зависимости от строки браузера ->
+Controller ->
+Model ->
+BD ->
+Controller->
+pages->
+Пользователь
+
+// ---- Конец -----------------
+
+
+// ---- Пагинация страниц.  -----------------
+
+Класс для пагинации */
+
+<?php
+
+/*
+ * Класс для генерации постраничной навигации
+ */
+
+class Pagination
+{
+
+    /**
+     * 
+     * @var Ссылок навигации на страницу
+     * 
+     */
+    private $max = 10;
+
+    /**
+     * 
+     * @var Ключ для GET, в который пишется номер страницы
+     * 
+     */
+    private $index = 'page';
+
+    /**
+     * 
+     * @var Текущая страница
+     * 
+     */
+    private $current_page;
+
+    /**
+     * 
+     * @var Общее количество записей
+     * 
+     */
+    private $total;
+
+    /**
+     * 
+     * @var Записей на страницу
+     * 
+     */
+    private $limit;
+
+    /**
+     * Запуск необходимых данных для навигации
+     * @param integer $total - общее количество записей
+     * @param integer $limit - количество записей на страницу
+     * 
+     * @return
+     */
+    public function __construct($total, $currentPage, $limit, $index)
+    {
+        # Устанавливаем общее количество записей
+        $this->total = $total;
+
+        # Устанавливаем количество записей на страницу
+        $this->limit = $limit;
+
+        # Устанавливаем ключ в url
+        $this->index = $index;
+
+        # Устанавливаем количество страниц
+        $this->amount = $this->amount();
+
+        # Устанавливаем номер текущей страницы
+        $this->setCurrentPage($currentPage);
+    }
+
+    /**
+     *  Для вывода ссылок
+     * 
+     * @return HTML-код со ссылками навигации
+     */
+    public function get()
+    {
+        # Для записи ссылок
+        $links = null;
+
+        # Получаем ограничения для цикла
+        $limits = $this->limits();
+
+        $html = '<ul class="pagination">';
+        # Генерируем ссылки
+        for ($page = $limits[0]; $page <= $limits[1]; $page++) {
+            # Если текущая это текущая страница, ссылки нет и добавляется класс active
+            if ($page == $this->current_page) {
+                $links .= '<li class="active"><a href="#">' . $page . '</a></li>';
+            } else {
+                # Иначе генерируем ссылку
+                $links .= $this->generateHtml($page);
+            }
+        }
+
+        # Если ссылки создались
+        if (!is_null($links)) {
+            # Если текущая страница не первая
+            if ($this->current_page > 1)
+            # Создаём ссылку "На первую"
+                $links = $this->generateHtml(1, '&lt;') . $links;
+
+            # Если текущая страница не первая
+            if ($this->current_page < $this->amount)
+            # Создаём ссылку "На последнюю"
+                $links .= $this->generateHtml($this->amount, '&gt;');
+        }
+
+        $html .= $links . '</ul>';
+
+        # Возвращаем html
+        return $html;
+    }
+
+    /**
+     * Для генерации HTML-кода ссылки
+     * @param integer $page - номер страницы
+     * 
+     * @return
+     */
+    private function generateHtml($page, $text = null)
+    {
+        # Если текст ссылки не указан
+        if (!$text)
+        # Указываем, что текст - цифра страницы
+            $text = $page;
+
+        $currentURI = rtrim($_SERVER['REQUEST_URI'], '/') . '/';
+        $currentURI = preg_replace('~/page-[0-9]+~', '', $currentURI);
+        # Формируем HTML код ссылки и возвращаем
+        return
+                '<li><a href="' . $currentURI . $this->index . $page . '">' . $text . '</a></li>';
+    }
+
+    /**
+     *  Для получения, откуда стартовать
+     * 
+     * @return массив с началом и концом отсчёта
+     */
+    private function limits()
+    {
+        # Вычисляем ссылки слева (чтобы активная ссылка была посередине)
+        $left = $this->current_page - round($this->max / 2);
+
+        # Вычисляем начало отсчёта
+        $start = $left > 0 ? $left : 1;
+
+        # Если впереди есть как минимум $this->max страниц
+        if ($start + $this->max <= $this->amount)
+        # Назначаем конец цикла вперёд на $this->max страниц или просто на минимум
+            $end = $start > 1 ? $start + $this->max : $this->max;
+        else {
+            # Конец - общее количество страниц
+            $end = $this->amount;
+
+            # Начало - минус $this->max от конца
+            $start = $this->amount - $this->max > 0 ? $this->amount - $this->max : 1;
+        }
+
+        # Возвращаем
+        return
+                array($start, $end);
+    }
+
+    /**
+     * Для установки текущей страницы
+     * 
+     * @return
+     */
+    private function setCurrentPage($currentPage)
+    {
+        # Получаем номер страницы
+        $this->current_page = $currentPage;
+
+        # Если текущая страница боле нуля
+        if ($this->current_page > 0) {
+            # Если текунщая страница меньше общего количества страниц
+            if ($this->current_page > $this->amount)
+            # Устанавливаем страницу на последнюю
+                $this->current_page = $this->amount;
+        } else
+        # Устанавливаем страницу на первую
+            $this->current_page = 1;
+    }
+
+    /**
+     * Для получеия общего числа страниц
+     * 
+     * @return число страниц
+     */
+    private function amount()
+    {
+        # Делим и возвращаем
+        return round($this->total / $this->limit);
+    }
+
+}
+
+
+/*
+В РОУТЕ
+
+'category/([0-9]+)/page-([0-9]+)' => 'catalog/category/$1/$2',
+
+
+ЗАТЕМ В КОНТРОЛЕРЕ
+
+		$total = Product::getTotalProductsInCategory($categoryId);
+
+		$pagination = new Pagination($total, $page, Product::SHOW_BY_DEFAULT, 'page-');
+
+В Модели Продукта
+
+public static function getTotalProductsInCategory($categoryId)
+	{
+
+		$con = mysqli_connect("localhost", "root", "1g0VZMoIl3iLkxms", "super_mag");
+		mysqli_set_charset($con, "utf8");
+
+			//Чек коннекта
+
+		if(mysqli_connect_error()){
+			echo "Faild to connect" . mysqli_connect_error();
+		}
+
+		$result = "SELECT count(id) AS count FROM product WHERE status = 1 AND category_id =  " . $categoryId;	
+
+		$info = mysqli_query($con, $result);
+		$rows = mysqli_fetch_array($info);
+
+		return $rows['count'];
+
+
+
+		///----
+	}
+
+
+В модели продукт
+Вывод максимального числа записией и проверка сдвига 
+Функиця offset  в mysql реализует сдвиг на указанное число
+
+	$page = intval($page);
+	$offset = ($page - 1) * self::SHOW_BY_DEFAULT;
+
+
+
+// ---- Конец -----------------
+
+
+
+
 */
 
 ?>

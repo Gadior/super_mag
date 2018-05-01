@@ -1,12 +1,20 @@
 <?php 
 
+	/*
+	Сделан коннект к базе посредствам PDO
+	Переменная класса - $pdo
+	*/
 
-		$con = mysqli_connect("localhost", "root", "1g0VZMoIl3iLkxms", "super_mag");
-		mysqli_set_charset($con, "utf8");
+	$host = 'localhost';
+    $db   = 'super_mag';
+    $user = 'root';
+    $pass = '1g0VZMoIl3iLkxms';
+    $charset = 'utf8';
 
-			//Чек коннекта
-
-		if(mysqli_connect_error()){
-			echo "Faild to connect" . mysqli_connect_error();
-		}
-
+    $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+    $opt = [
+        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        PDO::ATTR_EMULATE_PREPARES   => false,
+    ];
+    $pdo = new PDO($dsn, $user, $pass, $opt);

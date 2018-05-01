@@ -74,6 +74,8 @@
                                 <h2>Товары отсутствуют</h1>
                             <?php endif; ?>
 
+                            <?php echo $pagination->get(); ?>
+
 
 
                             </div><!--features_items-->

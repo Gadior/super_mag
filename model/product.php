@@ -2,7 +2,7 @@
 
 class Product
 {
-	const SHOW_BY_DEFAULT=10;
+	const SHOW_BY_DEFAULT=6;
 
 	public static function getLatestProducts($count=self::SHOW_BY_DEFAULT)
 	{
@@ -47,8 +47,10 @@ class Product
 		///---
 	}
 
-	public static function getProductListByCategory($categoryId = false)
+	public static function getProductListByCategory($categoryId = false, $page = 1)
 	{
+		$page = intval($page);
+		$offset = ($page - 1) * self::SHOW_BY_DEFAULT;
 		// ////////////////////////
 		// ////////////////////////
 		// echo "<br>";
@@ -73,7 +75,8 @@ class Product
 			}
 			
 
-			$result = "SELECT id, name, price, image, is_new, description FROM product WHERE status = 1 AND category_id = " . $categoryId . " ORDER BY id DESC LIMIT " . self::SHOW_BY_DEFAULT;			
+			$result = "SELECT id, name, price, image, is_new, description FROM product WHERE status = 1 AND category_id = " . $categoryId . " ORDER BY id DESC LIMIT " . self::SHOW_BY_DEFAULT
+			. " OFFSET " . $offset;			
 			////////////////////////
 			////////////////////////
 			// print_r($result);
@@ -180,6 +183,30 @@ class Product
 				////////////////////////
 				////////////////////////
 		return $product;
+	}
+
+	public static function getTotalProductsInCategory($categoryId)
+	{
+
+		$con = mysqli_connect("localhost", "root", "1g0VZMoIl3iLkxms", "super_mag");
+		mysqli_set_charset($con, "utf8");
+
+			//Чек коннекта
+
+		if(mysqli_connect_error()){
+			echo "Faild to connect" . mysqli_connect_error();
+		}
+
+		$result = "SELECT count(id) AS count FROM product WHERE status = 1 AND category_id =  " . $categoryId;	
+
+		$info = mysqli_query($con, $result);
+		$rows = mysqli_fetch_array($info);
+
+		return $rows['count'];
+
+
+
+		///----
 	}
 
 	
